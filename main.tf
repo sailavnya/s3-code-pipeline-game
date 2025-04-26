@@ -40,6 +40,20 @@ resource "aws_s3_bucket_policy" "host_bucket_policy" {
   bucket =  aws_s3_bucket.test-bucket.id # ID of the S3 bucket
 
   # Policy JSON for allowing public read access
+ policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect" : "Allow",
+            "Principal" : "*",
+            "Action" : "s3:GetObject",
+            "Resource": "arn:aws:s3:::${var.my_bucket_name}/*"
+        }
+    ]
+  })
+}
+
 
 module "template_files" {
     source = "hashicorp/dir/template"
