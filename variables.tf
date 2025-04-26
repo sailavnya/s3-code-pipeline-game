@@ -7,5 +7,5 @@ variable "my_bucket_region" {
 variable "my_bucket_name" {
     description = "my bucket name"
     type = string
-    default = "terrform-github-actions-s3-2604234"
+    default = "terrform-github-actions-s3-260423"
 }
